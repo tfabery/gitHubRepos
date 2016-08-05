@@ -15,8 +15,8 @@ exports.getRepos = function(username, display) {
   $.get('https://api.github.com/users/' + username + '/repos' + addApiKey).then(function(response){
     var list = '';
     response.forEach(function(repo) {
-      createdDate = moment(repo['created_at'])['_d'];
-      list = list + '<li><span class="repoName">' + repo['name'] + '</span>, created: ' +  createdDate +  '</li>'
+      createdDate = moment(repo.created_at)._d;
+      list = list + '<li><span class="repoName">' + repo.name + '</span>, created: ' +  createdDate +  '</li>';
     });
     display(list);
   }).fail(function(error){
@@ -29,14 +29,14 @@ var getRepos = require('./../js/github-lookup.js').getRepos;
 
 var displayRepos = function(html) {
   $('#repos').html(html);
-}
+};
 
 $(function() {
   $('.username').submit(function(event) {
     event.preventDefault();
     var username = $('#username').val();
     getRepos (username, displayRepos);
-  })
+  });
 });
 
 },{"./../js/github-lookup.js":2}]},{},[3]);
