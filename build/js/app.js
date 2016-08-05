@@ -6,11 +6,12 @@ var apiKey = require('./../.env').apiKey;
 
 exports.getRepos = function(username, display) {
   $.get('https://api.github.com/users/' + username + '/repos?access_token=' + apiKey).then(function(response){
-    console.log(response);
+    var list = '';
     response.forEach(function(repo) {
       createdDate = moment(repo['created_at'])['_d'];
-      display(repo['name'], createdDate);
-    })
+      list = list + '<li><span class="repoName">' + repo['name'] + '</span>, created: ' +  createdDate +  '</li>'
+    });
+    display(list);
   }).fail(function(error){
     console.log(error.responseJSON.message);
   });
@@ -19,8 +20,8 @@ exports.getRepos = function(username, display) {
 },{"./../.env":1}],3:[function(require,module,exports){
 var getRepos = require('./../js/github-lookup.js').getRepos;
 
-var displayRepos = function(name, createdAt) {
-  $('#repos').append('<li><span class="repoName">' + name + '</span>, created: ' +  createdAt +  '</li>');
+var displayRepos = function(html) {
+  $('#repos').html(html);
 }
 
 $(function() {
