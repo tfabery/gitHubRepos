@@ -1,7 +1,14 @@
 var apiKey = require('./../.env').apiKey;
 
 exports.getRepos = function(username, display) {
-  $.get('https://api.github.com/users/' + username + '/repos?access_token=' + apiKey).then(function(response){
+  var addApiKey;
+  if (apiKey) {
+    addApiKey = '?access_token=' + apiKey;
+  }
+  else {
+    addApiKey = '';
+  }
+  $.get('https://api.github.com/users/' + username + '/repos' + addApiKey).then(function(response){
     var list = '';
     response.forEach(function(repo) {
       createdDate = moment(repo['created_at'])['_d'];
