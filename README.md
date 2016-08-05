@@ -4,7 +4,7 @@
 
 ## Description
 
-_This webpage let's a user view repo name and created time for inputted GitHub username_
+_This webpage let's a user view the list of repo name and created time for inputted GitHub username_
 
 
 ## Setup/Installation Requirements
