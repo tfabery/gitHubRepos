@@ -9,7 +9,7 @@ _This webpage let's a user view repo name and created time for inputted GitHub u
 
 ## Setup/Installation Requirements
 
-* clone repository from https://github.com/tfabery/hair_salon_ruby
+* clone repository from https://github.com/tfabery/gitHubRepos
 * create .env file at the top level of the project directory.
 * put "exports.apiKey = 'your api key';" in .env file.(you can get your own github api by going to your github "personal access tokens" under settings)
 * run "npm install" and "bower install" on terminal.
